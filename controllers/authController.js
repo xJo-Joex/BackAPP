@@ -6,7 +6,7 @@ const register = async (req, res) => {
         const token = await authService.register(username, email, password);
         res.status(201).json({ token });
     } catch (error) {
-        res.status(400).json({ error: error.message });
+        res.status(400).json({ message: error.message });
     }
 };
 
@@ -16,7 +16,7 @@ const login = async (req, res) => {
         const token = await authService.login(email, password);
         res.status(200).json({ token });
     } catch (error) {
-        res.status(400).json({ error: error.message });
+        res.status(400).json({ message: error.message });
     }
 };
 

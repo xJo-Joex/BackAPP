@@ -1,18 +1,20 @@
 const express = require('express');
 const authRoutes = require('./routes/authRoutes');
+const transactionRoutes = require('./routes/transactionRoutes');
 const connectDB = require('./config/db');
-require('dotenv').config();
-const cors = require('cors');
 
+const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3000;
+require('dotenv').config();
 
-// Middleware para parsear JSON
+// Middlewares
 app.use(express.json());
 app.use(cors());
 
 connectDB();
-// Rutas de autenticación
+// Rutas
+app.use('/api', transactionRoutes)
 app.use('/api/auth', authRoutes);
 
 // Iniciar servidor y conexión a la base de datos

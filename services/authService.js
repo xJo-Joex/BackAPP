@@ -24,7 +24,7 @@ const login = async (email, password) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) throw new Error('Contraseña incorrecta');
     
-    return generateToken(user._id);
+    return {token:generateToken(user._id), userId: user._id};
 };
 
 const generateToken = (userId) => {
